@@ -4,7 +4,7 @@ import connectDB from "@/utils/connectDB";
 import { verifyPassword } from "@/utils/auth";
 import User from "@/models/User";
 
-const authOptions = {
+export const authOptions = {
   session: {
     strategy: "jwt",
   },
