@@ -2,53 +2,40 @@
 import Link from "next/link";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { BeatLoader } from "react-spinners";
+import { signIn } from "next-auth/react";
 
-function SignupPage() {
+function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
   //   handler
-  const signupHandler = async (e) => {
+  const LoginHandler = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      toast.error("رمز و تکرار آن یکسان نیست");
-      return;
-    }
+
     setLoading(true);
-    const res = await axios
-      .post("/api/auth/signup", {
-        email,
-        password,
-      })
-      .then((res) => res)
-      .catch((err) => err);
-
-    if (res.status === 201) {
-      toast.success("ثبت نام با موفقیت انجام شد");
-    } else {
-      toast.error("خطا در ثبت نام");
-      setLoading(false);
-      return;
-    }
-
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
     setLoading(false);
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    router.push("/login");
+    if (res.error) {
+      setEmail("");
+      setPassword("");
+      toast.error(res.error);
+      return;
+    } else {
+      router.push("/");
+    }
   };
   return (
     <div className="flex flex-col justify-center items-center h-[90vh]">
-      <h4 className="mb-5 text-[#304ffe] font-semibold text-4xl ">
-        فرم ثبت نام
-      </h4>
+      <h4 className="mb-5 text-[#304ffe] font-semibold text-4xl ">فرم ورود</h4>
       <form className="flex flex-col p-10 mb-8 rounded-lg border-2 shadow-lg shadow-[#304ffe96] border-[#304ffe]">
         <label className="mb-3 text-[#304ffe] font-normal" htmlFor="email">
           ایمیل
@@ -74,21 +61,6 @@ function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <label
-          className="mb-3 text-[#304ffe] font-normal"
-          htmlFor="confirmPassword"
-        >
-          تکرار رمز عبور
-        </label>
-        <input
-          dir="ltr"
-          className="w-64 mb-10 border border-[#304ffe] border-dashed text-gray-700 rounded-md p-2 text-base h-10 focus:border-solid focus:outline-none "
-          type="password"
-          name="confirmPassword"
-          id="confirmPassword"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          value={confirmPassword}
-        />
         {loading ? (
           <BeatLoader
             color="#304ffe"
@@ -100,20 +72,20 @@ function SignupPage() {
           <button
             className="py-2 border-none bg-[#304ffe] text-white text-lg
           font-normal rounded-md cursor-pointer transition-all ease-in duration-100 hover:scale-105"
-            onClick={signupHandler}
+            onClick={LoginHandler}
             type="submit"
           >
-            ثبت نام
+            ورود
           </button>
         )}
       </form>
       <p className="text-gray-700 text-lg">
-        حساب کاربری دارید؟{" "}
+        حساب کاربری ندارید؟{" "}
         <Link
           className="mr-3 text-[#304ffe] border-b-2 border-[gray]"
-          href="/login"
+          href="/signup"
         >
-          ورود
+          ثبت نام
         </Link>
       </p>
       <ToastContainer />
@@ -121,4 +93,4 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+export default LoginPage;
