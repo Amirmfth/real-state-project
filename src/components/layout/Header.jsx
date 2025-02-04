@@ -1,15 +1,17 @@
+"use client";
 import { FiLogIn } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { useSession } from "next-auth/react";
 
-async function Header() {
-  const session = await getServerSession(authOptions);
+function Header() {
+  const { data } = useSession();
   return (
     <header className="flex justify-between items-center p-5 my-5 rounded-xl bg-[#304ffe] text-white">
       <div>
-        <ul className="list-none flex space-x-3 space-x-reverse md:space-x-8">
+        <ul className="list-none flex space-x-3 space-x-reverse md:space-x-8 md:space-x-reverse">
           <li>
             <Link href={"/"}>صفحه اصلی</Link>
           </li>
@@ -18,7 +20,7 @@ async function Header() {
           </li>
         </ul>
       </div>
-      {session ? (
+      {data ? (
         <div>
           <Link
             className="flex items-center bg-white text-[#304ffe] py-1 px-2 rounded-md ease-in duration-100 hover:bg-[#304ffe] hover:text-white"

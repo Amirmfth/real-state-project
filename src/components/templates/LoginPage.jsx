@@ -42,7 +42,7 @@ function LoginPage() {
         </label>
         <input
           dir="ltr"
-          className="w-64 mb-10 border border-[#304ffe] border-dashed text-gray-700 rounded-md p-2 text-base h-10 focus:border-solid focus:outline-none "
+          className="w-64 mb-10 border border-[#304ffe] border-dashed text-gray-400 rounded-md p-2 text-base h-10 focus:border-solid focus:outline-none "
           type="email"
           name="email"
           id="email"
@@ -54,7 +54,7 @@ function LoginPage() {
         </label>
         <input
           dir="ltr"
-          className="w-64 mb-10 border border-[#304ffe] border-dashed text-gray-700 rounded-md p-2 text-base h-10 focus:border-solid focus:outline-none "
+          className="w-64 mb-10 border border-[#304ffe] border-dashed text-gray-400 rounded-md p-2 text-base h-10 focus:border-solid focus:outline-none "
           type="password"
           name="password"
           id="password"
@@ -79,7 +79,7 @@ function LoginPage() {
           </button>
         )}
       </form>
-      <p className="text-gray-700 text-lg">
+      <p className="text-gray-400 text-lg">
         حساب کاربری ندارید؟{" "}
         <Link
           className="mr-3 text-[#304ffe] border-b-2 border-[gray]"
