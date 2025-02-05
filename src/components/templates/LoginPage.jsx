@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { BeatLoader } from "react-spinners";
 import { signIn } from "next-auth/react";
+import Loader from "@/modules/Loader";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -62,12 +62,7 @@ function LoginPage() {
           value={password}
         />
         {loading ? (
-          <BeatLoader
-            color="#304ffe"
-            size={25}
-            loading={loading}
-            cssOverride={{ margin: "auto" }}
-          />
+          <Loader />
         ) : (
           <button
             className="py-2 border-none bg-[#304ffe] text-white text-lg

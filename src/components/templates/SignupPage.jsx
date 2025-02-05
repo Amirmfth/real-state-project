@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { BeatLoader } from "react-spinners";
+import Loader from "@/modules/Loader";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -90,12 +90,7 @@ function SignupPage() {
           value={confirmPassword}
         />
         {loading ? (
-          <BeatLoader
-            color="#304ffe"
-            size={25}
-            loading={loading}
-            cssOverride={{ margin: "auto" }}
-          />
+          <Loader />
         ) : (
           <button
             className="py-2 border-none bg-[#304ffe] text-white text-lg
