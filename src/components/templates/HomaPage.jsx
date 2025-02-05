@@ -1,25 +1,17 @@
 import { FaCity } from "react-icons/fa";
 import { FiCircle } from "react-icons/fi";
 import CategoryCard from "@/modules/CategoryCard";
+import { categories, cities, services } from "@/constants/strings";
 
 function HomaPage() {
-  const services = ["اجاره", "فروش", "خرید", "رهن"];
-  const cities = [
-    "تهران",
-    "مشهد",
-    "همدان",
-    "قزوین",
-    "کرمانشاه",
-    "ساری",
-    "اهواز",
-    "اصفهان",
-  ];
   return (
     <div>
       {/* banner */}
       <div className="flex flex-col-reverse justify-center items-center rounded-lg p-5 my-24 lg:flex-row">
         <div className="w-full text-center text-[#304ffe]">
-          <h1 className="font-bold text-4xl mb-7 md:text-5xl">سامانه خرید و اجاره ملک</h1>
+          <h1 className="font-bold text-4xl mb-7 md:text-5xl">
+            سامانه خرید و اجاره ملک
+          </h1>
           <ul className="list-none flex justify-center flex-wrap">
             {services.map((service) => (
               <li
@@ -35,10 +27,9 @@ function HomaPage() {
       </div>
       {/* categories */}
       <div className="flex justify-center flex-wrap my-12 md:justify-between">
-        <CategoryCard title="خانه ویلایی" name="villa" />
-        <CategoryCard title="آپارتمان" name="apartment" />
-        <CategoryCard title="مغازه" name="store" />
-        <CategoryCard title="دفتر" name="office" />
+        {Object.keys(categories).map((i) => (
+          <CategoryCard key={i} title={categories[i]} name={i} />
+        ))}
       </div>
       {/* cities */}
       <div className="my-24">
@@ -62,6 +53,3 @@ function HomaPage() {
 }
 
 export default HomaPage;
-
-
-

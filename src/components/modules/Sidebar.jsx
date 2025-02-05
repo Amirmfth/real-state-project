@@ -1,13 +1,9 @@
 import Link from "next/link";
 import { HiFilter } from "react-icons/hi";
+import { categories } from "@/constants/strings";
 
 function Sidebar() {
-  const queries = [
-    { villa: "ویلا" },
-    { apartment: "اپارتمان" },
-    { store: "مغازه" },
-    { office: "دفتر" },
-  ];
+  
   return (
     <div className="flex flex-col">
       <p className="flex font-normal text-xl">
@@ -17,16 +13,16 @@ function Sidebar() {
       <Link className="text-gray-500 m-1" href={"/buy-residential"}>
         همه
       </Link>
-      {queries.map((query) => (
+      {Object.keys(categories).map((i) => (
         <Link
-          key={Object.keys(query)}
+          key={Object.keys(i)}
           className="text-gray-500 m-1"
           href={{
             pathname: "/buy-residential",
-            query: { category: Object.keys(query) },
+            query: { category: i },
           }}
         >
-          {Object.values(query)}
+          {categories[i]}
         </Link>
       ))}
     </div>
