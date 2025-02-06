@@ -9,9 +9,10 @@ function HomaPage() {
       {/* banner */}
       <div className="flex flex-col-reverse justify-center items-center rounded-lg p-5 my-24 lg:flex-row">
         <div className="w-full text-center text-[#304ffe]">
-          <h1 className="font-bold text-4xl mb-7 md:text-5xl">
+          <h1 className="font-bold text-6xl mb-7">خونه چی</h1>
+          <h3 className="font-bold text-4xl mb-7 md:text-4xl">
             سامانه خرید و اجاره ملک
-          </h1>
+          </h3>
           <ul className="list-none flex justify-center flex-wrap">
             {services.map((service) => (
               <li

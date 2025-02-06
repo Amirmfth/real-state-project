@@ -11,7 +11,8 @@ function Header() {
   return (
     <header className="flex justify-between items-center p-5 my-5 rounded-xl bg-[#304ffe] text-white">
       <div>
-        <ul className="list-none flex space-x-3 space-x-reverse md:space-x-8 md:space-x-reverse">
+        <ul className="list-none items-center flex space-x-3 space-x-reverse md:space-x-8 md:space-x-reverse">
+          <li className="font-bold text-3xl">خونه چی</li>
           <li>
             <Link href={"/"}>صفحه اصلی</Link>
           </li>
@@ -21,7 +22,7 @@ function Header() {
         </ul>
       </div>
       {data ? (
-        <div>
+        <div className="">
           <Link
             className="flex items-center bg-white text-[#304ffe] py-1 px-2 rounded-md ease-in duration-100 hover:bg-[#304ffe] hover:text-white"
             href="/dashboard"

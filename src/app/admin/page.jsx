@@ -7,6 +7,10 @@ import DashboardSidebar from "@/layout/DashboardSidebar";
 import AdminPage from "@/templates/AdminPage";
 import Profile from "@/models/Profile";
 
+export const metadata = {
+  title: "پنل ادمین خونه چی | سامانه خرید و فروش ملک",
+};
+
 async function Admin() {
   await connectDB();
 
