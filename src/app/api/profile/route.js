@@ -9,8 +9,8 @@ export async function GET() {
   try {
     await connectDB();
 
-    const profiles = await Profile.find().select("-userId");
-    return NextResponse.json({ data: profiles } , {status: 200});
+    const profiles = await Profile.find({ published: true }).select("-userId");
+    return NextResponse.json({ data: profiles }, { status: 200 });
   } catch (error) {
     console.log(error);
     return NextResponse.json(

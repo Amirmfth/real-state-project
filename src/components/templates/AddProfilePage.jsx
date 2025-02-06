@@ -46,6 +46,18 @@ function AddProfilePage({ profile }) {
       toast.error(data.error);
     } else {
       toast.success("آگهی شما با موفقیت ثبت شد");
+      setProfileData({
+        title: "",
+        description: "",
+        location: "",
+        phone: "",
+        price: "",
+        realState: "",
+        constructionDate: new Date(),
+        category: "villa",
+        rules: [],
+        amenities: [],
+      });
       router.refresh();
     }
   };
