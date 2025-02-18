@@ -35,12 +35,12 @@ function DashboardCard({ profile }) {
   };
 
   return (
-    <div className="flex border-2 border-[#304ffe58] rounded-2xl mb-5">
+    <div className="flex border-2 border-[#304ffe58] rounded-2xl mb-5 p-2 md:p-0">
       <Card profile={profile} />
-      <div className="flex items-end justify-between p-3 w-full">
+      <div className="flex flex-col items-end justify-between p-3 w-full md:flex-row">
         <button
           onClick={editHandler}
-          className="flex justify-center items-center w-[48%] bg-white cursor-pointer h-10 rounded-lg text-base border border-[rgb(0,168,0)] text-[rgb(0,168,0)]"
+          className="flex w-full justify-center items-center  bg-white cursor-pointer h-10 rounded-lg text-base border border-[rgb(0,168,0)] text-[rgb(0,168,0)] md:w-[48%]"
         >
           ویرایش
           <FiEdit className="text-lg mr-3" />
@@ -48,7 +48,7 @@ function DashboardCard({ profile }) {
 
         <button
           onClick={deleteHandler}
-          className="flex justify-center items-center w-[48%] bg-white cursor-pointer h-10 rounded-lg text-base border border-[#db0505] text-[#db0505]"
+          className="flex w-full justify-center items-center  bg-white cursor-pointer h-10 rounded-lg text-base border border-[#db0505] text-[#db0505] md:w-[48%]"
         >
           {loading ? (
             <Loader />

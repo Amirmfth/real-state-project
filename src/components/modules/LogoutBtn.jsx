@@ -6,10 +6,12 @@ function LogoutBtn() {
   return (
     <button
       onClick={signOut}
-      className="flex bg-none border-none mt-5 w-full text-right text-base text-red-600 cursor-pointer"
+      className=" bg-none border-none md:self-start text-base text-red-600 cursor-pointer md:mt-5 "
     >
-      <FiLogOut className="!text-xl ml-1 !text-red-600" />
-      خروج
+      <div className="flex text-center md:text-right">
+        <FiLogOut className="!text-xl ml-1 !text-red-600" />
+        <span>خروج</span>
+      </div>
     </button>
   );
 }

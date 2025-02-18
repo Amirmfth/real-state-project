@@ -14,7 +14,6 @@ async function DashboardLayout({ children }) {
 
   await connectDB();
   const user = await User.findOne({ email: session.user.email });
-  console.log(user);
   if (!user) <p>کاربر مورد نظر پیدا نشد</p>;
 
   return (

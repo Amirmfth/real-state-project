@@ -27,7 +27,7 @@ function ProfileDetailsPage({ profile }) {
   const icons = profileDetailsIcons;
 
   return (
-    <div className="flex mt-14">
+    <div className="flex flex-col mt-14 md:flex-row">
       {/* main */}
       <div className="w-full">
         <h1 className="text-xl font-normal text-[#304ffe] mb-3">{title}</h1>
@@ -43,7 +43,7 @@ function ProfileDetailsPage({ profile }) {
         <ItemList data={rules} />
       </div>
       {/* sidebar */}
-      <div className="w-64 mr-10">
+      <div className="flex flex-col justify-around md:mr-10 md:w-64">
         {/* realstate */}
         <div className="flex flex-col items-center shadow-[0px_4px_15px_#304ffe4a] p-3 rounded-lg mb-5">
           <SiHomebridge className="text-5xl text-[#304ffe] mt-3 mb-5" />

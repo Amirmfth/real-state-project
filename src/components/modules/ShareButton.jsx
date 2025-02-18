@@ -9,7 +9,7 @@ function ShareButton() {
     toast.success("لینک با موفقیت کپی شد");
   };
   return (
-    <div className="flex items-center justify-center  shadow-[0px_4px_15px_#304ffe4a] p-3 rounded-lg mb-5 ">
+    <div className=" flex items-center justify-center  shadow-[0px_4px_15px_#304ffe4a] p-3 rounded-lg mb-5 ">
       <LuShare2 className="ml-3 text-2xl text-[#304ffe]" />
       <button
         onClick={copyHandler}

@@ -10,7 +10,7 @@ function Card({ profile }) {
 
   const icons = cardIcons;
   return (
-    <div className="w-64 border-2 border-[#304ffe58] rounded-xl p-3 m-3">
+    <div className="w-full border-2 border-[#304ffe58] rounded-xl p-3 md:m-3 md:w-64">
       <div>
         {icons[category]}
         <p className="font-normal my-3">{title}</p>
