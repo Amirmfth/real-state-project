@@ -3,7 +3,7 @@ import axios from "axios";
 
 async function BuyResidential({ searchParams }) {
   const res = await axios
-    .get("http://localhost:3000/api/profile", { cache: "no-store" })
+    .get(`${process.env.NEXTAUTH_URL}/api/profile`, { cache: "no-store" })
     .then((res) => res.data)
     .catch((err) => err.response.data);
 
