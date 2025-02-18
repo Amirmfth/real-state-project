@@ -1,20 +1,27 @@
 import BuyResidentialPage from "@/templates/BuyResidentialPage";
-import axios from "axios";
 
 async function BuyResidential({ searchParams }) {
-  const res = await axios
-    .get(`${process.env.NEXTAUTH_URL}/api/profile`, { cache: "no-store" })
-    .then((res) => res.data)
-    .catch((err) => err.response.data);
+  try {
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/profile`, {
+      cache: "no-store",
+    });
 
-  if (res.error) return <h3>{res.error}</h3>;
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
 
-  let finalData = res.data;
-  if (searchParams.category) {
-    finalData = finalData.filter((i) => i.category === searchParams.category);
+    let finalData = await res.json();
+
+    if (searchParams.category) {
+      finalData = finalData.data.filter(
+        (i) => i.category === searchParams.category
+      );
+    }
+
+    return <BuyResidentialPage data={finalData.data} />;
+  } catch (error) {
+    return <h3>Error fetching data: {error.message}</h3>;
   }
-
-  return <BuyResidentialPage data={JSON.parse(JSON.stringify(finalData))} />;
 }
 
 export default BuyResidential;
